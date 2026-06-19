@@ -16,3 +16,5 @@ In diesem Projekt habe ich eine eigene Testumgebung (Homelab) für die Fachricht
 
 ## Screenshot des laufenden Webservers
 ![Welcome to Nginx](screenshot.png)
+
+*Hinweis: Der Webserver läuft im lokalen Testnetzwerk unter der IP-Adresse http://192.168.2.128:8080*
