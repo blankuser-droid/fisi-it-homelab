@@ -13,3 +13,6 @@ In diesem Projekt habe ich eine eigene Testumgebung (Homelab) für die Fachricht
 - Linux-Administration über das Terminal (CLI)
 - Netzwerkbrücke (Bridged Adapter) Konfiguration und Troubleshooting
 - Docker-Architektur und Container-Isolierung
+
+## Screenshot des laufenden Webservers
+![Welcome to Nginx](screenshot.png)
