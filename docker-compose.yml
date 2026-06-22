@@ -27,4 +27,5 @@ services:
 networks:
   fisi-network:
     driver: bridge
+
 EOF
