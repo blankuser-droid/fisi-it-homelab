@@ -1,3 +1,4 @@
+cat << 'EOF' > docker-compose.yml
 version: '3.8'
 
 services:
@@ -7,3 +8,23 @@ services:
     ports:
       - "8080:80"
     restart: always
+    networks:
+      - fisi-network
+
+  meine-datenbank:
+    image: postgres:15-alpine
+    container_name: meine-datenbank
+    environment:
+      POSTGRES_USER: fisi_user
+      POSTGRES_PASSWORD: fisi_secure_password
+      POSTGRES_DB: fisi_db
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - fisi-network
+
+networks:
+  fisi-network:
+    driver: bridge
+EOF
