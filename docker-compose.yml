@@ -1,6 +1,4 @@
 cat << 'EOF' > docker-compose.yml
-version: '3.8'
-
 services:
   mein-webserver:
     image: nginx:latest
@@ -24,8 +22,20 @@ services:
     networks:
       - fisi-network
 
+  portainer-admin:
+    image: portainer/portainer-ce:latest
+    container_name: portainer-admin
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/var/data
+    restart: always
+
+volumes:
+  portainer_data:
+
 networks:
   fisi-network:
     driver: bridge
-
 EOF
