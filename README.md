@@ -10,14 +10,15 @@ In diesem Projekt habe ich eine eigene Testumgebung (Homelab) für die Fachricht
 - **Webserver:** Nginx im Docker-Container (Port-Forwarding 8080:80)
 - **Datenbank:** PostgreSQL 15 (Alpine-basiert, Port 5432)
 - **Netzwerk:** Isoliertes Docker-Netzwerk (Bridge-Modus) für sichere Container-Kommunikation
-- **Automatisierung:** Bash-Skript für regelmäßige Datensicherung (PostgreSQL pg_dump & tar-Komprimierung)
 - **GUI-Verwaltung:** Portainer CE (Port 9000) zur grafischen Administration und Log-Analyse
+- **Automatisierung:** Bash-Skript gesteuert über systemweiten **Cronjob** (täglich um 02:00 Uhr) zur vollautomatischen Datensicherung
 
 ## Was ich gelernt habe:
 - Linux-Administration über das Terminal (CLI) und Fehlerbehebung (Troubleshooting)
 - Netzwerkinfrastruktur: Bridged Adapter Konfiguration, Port-Mapping und DNS-Anpassungen (daemon.json)
 - Docker-Architektur: Container-Isolierung, Docker Volumes und Docker Networking
 - Shell-Scripting (Bash) zur proaktiven Automatisierung von IT-Systemprozessen
+- **Automatisierung unter Linux:** Einrichtung und Syntax-Konfiguration von zeitleitenden Diensten via **Cron (Crontab)**
 - Grafische Enterprise-Verwaltung von Container-Infrastrukturen via Portainer
 
 ## Screenshots der laufenden Umgebung
