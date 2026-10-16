@@ -1,4 +1,3 @@
-cat << 'EOF' > docker-compose.yml
 services:
   mein-webserver:
     image: nginx:latest
@@ -14,10 +13,12 @@ services:
     container_name: meine-datenbank
     environment:
       POSTGRES_USER: fisi_user
-      POSTGRES_PASSWORD: ***REMOVED***
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
       POSTGRES_DB: fisi_db
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     restart: always
     networks:
       - fisi-network
@@ -29,13 +30,13 @@ services:
       - "9000:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/var/data
+      - portainer_data:/data
     restart: always
 
 volumes:
   portainer_data:
+  postgres_data:
 
 networks:
   fisi-network:
     driver: bridge
-EOF
