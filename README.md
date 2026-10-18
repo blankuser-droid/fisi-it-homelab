@@ -29,7 +29,7 @@ In diesem Projekt habe ich eine eigene Testumgebung (Homelab) für die Fachricht
 - Der tägliche Sicherungsjob liegt im Benutzer-Crontab und startet `backup.sh` um 20:00 Uhr.
 - Lokale Sicherungsdateien liegen unter `backups/` und sind von Git ausgeschlossen.
 - Die PostgreSQL-Verbindung wurde geprüft. Die Datenbank `fisi_db` enthielt zum Prüfzeitpunkt keine Tabellen.
-- Die durchgeführten Änderungen und Prüfungen sind in [docs/INFRASTRUKTUR-AENDERUNGEN-2026-10.md](docs/INFRASTRUKTUR-AENDERUNGEN-2026-10.md) dokumentiert.
+- Durchgeführte Änderungen und Prüfungen stehen in [docs/INFRASTRUKTUR-AENDERUNGEN-2026-10.md](docs/INFRASTRUKTUR-AENDERUNGEN-2026-10.md) und im [Betriebsprotokoll zu PostgreSQL und Git-Historie](docs/PROTOKOLL-POSTGRESQL-UND-GIT-HISTORIE-2026-10.md).
 
 ### Lokale Einrichtung
 
@@ -37,7 +37,7 @@ In diesem Projekt habe ich eine eigene Testumgebung (Homelab) für die Fachricht
 2. In `.env` ein starkes, individuelles PostgreSQL-Passwort eintragen.
 3. Compose-Konfiguration prüfen und die benötigten Dienste starten.
 
-Die `.env`-Datei und echte Datenbank-Backups gehören nicht ins Repository. Das bisherige Passwort war in älteren Commits fest eingetragen. Falls es noch verwendet wird, muss es geändert werden; ein Austausch in der aktuellen Datei entfernt es nicht aus der Git-Historie.
+Die `.env`-Datei und echte Datenbank-Backups gehören nicht ins Repository. Das zuvor veröffentlichte PostgreSQL-Passwort wurde im Oktober 2026 geändert. Die Historie des Branches `main` wurde mit `git-filter-repo` bereinigt und anschließend zu GitHub übertragen. Alte lokale Klone können weiterhin die frühere Historie enthalten; pushe sie nicht nach GitHub. Weitere Einzelheiten stehen im [Betriebsprotokoll](docs/PROTOKOLL-POSTGRESQL-UND-GIT-HISTORIE-2026-10.md).
 
 ## Screenshots der Umgebung
 
