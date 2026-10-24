@@ -21,7 +21,7 @@ Dieses Protokoll hält die durchgeführten Änderungen fest. Es enthält absicht
 - Diese Sicherung wurde in einer temporären PostgreSQL-15-Testinstanz wiederhergestellt. Der Testcontainer hatte kein Netzwerk und keinen veröffentlichten Port; die laufende Datenbank wurde nicht verändert.
 - `psql` spielte den SQL-Dump ohne gemeldeten Fehler ein. Die anschließende Abfrage fand 0 Anwendungstabellen, passend zum zuvor geprüften leeren Datenbankstand.
 - Der Testcontainer und sein temporärer Speicher wurden danach entfernt. Damit ist der Restore des damaligen leeren Datenbankstands geprüft; eine Wiederherstellung späterer Anwendungsdaten ist noch nicht getestet.
-- Zum Prüfzeitpunkt meldete `psql \\dt`, dass keine Tabellen vorhanden waren.
+- Zum Prüfzeitpunkt meldete `psql \dt`, dass keine Tabellen vorhanden waren.
 - Das Passwort des Datenbankbenutzers `fisi_user` wurde interaktiv in PostgreSQL geändert. Der Wert wurde weder in dieses Repository geschrieben noch hier dokumentiert.
 - `.env` enthält lokal den neuen Wert, hat Zugriffsrechte `600` und wird von Git ignoriert. Die Compose-Konfiguration liest `POSTGRES_PASSWORD` aus dieser lokalen Datei.
 - Die Compose-Konfiguration wurde geprüft; der Container wurde neu erstellt. `pg_isready` und eine TCP-Anmeldung mit `psql` waren erfolgreich.
