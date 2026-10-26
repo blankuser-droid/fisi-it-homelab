@@ -48,3 +48,21 @@ Die `.env`-Datei und echte Datenbank-Backups gehören nicht ins Repository. Das 
 ### Portainer
 
 ![Portainer Dashboard](portainer.png)
+
+## Portfolio über Nginx
+
+Der Portfolio-Code wird separat im Repository
+[fisi-portfolio-website](https://github.com/blankuser-droid/fisi-portfolio-website)
+verwaltet. Für die Auslieferung durch diesen Nginx-Container liegen
+`index.html`, `style.css` und `script.js` im benachbarten Ordner
+`../fisi-portfolio-site`.
+
+Die Compose-Konfiguration bindet diesen Ordner nur lesend in den
+Nginx-Webroot `/usr/share/nginx/html` ein. Das Git-Repository selbst
+wird nicht eingebunden, damit interne Git-Dateien nicht im Webroot liegen.
+
+Nach Änderungen an der Nginx-Konfiguration kann nur der Webserver
+aktualisiert werden:
+
+```bash
+docker compose up -d --no-deps mein-webserver

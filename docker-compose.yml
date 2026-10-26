@@ -4,6 +4,8 @@ services:
     container_name: mein-webserver
     ports:
       - "8080:80"
+    volumes:
+      - ".../fisi-portfolio-site:/usr/share/nginx/html:ro"
     restart: always
     networks:
       - fisi-network
