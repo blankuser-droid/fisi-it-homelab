@@ -17,8 +17,6 @@ services:
       POSTGRES_USER: fisi_user
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
       POSTGRES_DB: fisi_db
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: always
@@ -38,6 +36,8 @@ services:
 volumes:
   portainer_data:
   postgres_data:
+    external: true
+    name: my-fisi-portfolio_postgres_data
 
 networks:
   fisi-network:

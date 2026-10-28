@@ -41,3 +41,24 @@ Dieses Protokoll hält die durchgeführten Änderungen fest. Es enthält absicht
 - Alte Klone sollten verworfen und frisch vom bereinigten GitHub-Repository geklont werden. Vor dem Ersetzen einer Arbeitskopie müssen benötigte lokale Änderungen und Dateien wie `.env` separat gesichert werden.
 - Datenbank-Backups und `.env` bleiben lokal und gehören nicht in Git.
 - GitHub oder Forks können noch zwischengespeicherte Verweise auf frühere Commits haben. Das alte Passwort ist geändert; bei weiterhin sichtbaren alten Ansichten kann GitHub Support um Cache-Bereinigung gebeten werden.
+
+## 28.10.2026 – PostgreSQL-Port nicht mehr auf dem Host veröffentlichen
+
+In `docker-compose.yml` wurde die Portfreigabe `5432:5432` beim Dienst
+`meine-datenbank` entfernt. PostgreSQL ist damit nicht mehr direkt über einen
+Port des Ubuntu-Hosts erreichbar. Container im Docker-Netzwerk und lokale
+Prüfungen mit `docker exec` können weiterhin auf die Datenbank zugreifen.
+
+Das vorhandene Daten-Volume wird ausdrücklich als externes Docker-Volume
+verwendet:
+
+- Volume: `my-fisi-portfolio_postgres_data`
+- Einhängepunkt: `/var/lib/postgresql/data`
+
+Prüfergebnis am 28.10.2026:
+
+- `docker compose ... config -q`: erfolgreich, keine Konfigurationsfehler.
+- `pg_isready`: `/var/run/postgresql:5432 - accepting connections`
+- `docker inspect`: bestätigt das erwartete Daten-Volume am PostgreSQL-Einhängepunkt.
+- `docker ps`: zeigt nur `5432/tcp`; es gibt keine Host-Port-Zuordnung wie
+  `0.0.0.0:5432->5432`.
